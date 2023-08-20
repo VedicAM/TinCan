@@ -1,7 +1,7 @@
 # TinCan
 
 ## Building
-When building it is important to have GLFW and GLEW installed. To run simply the command ```make```
+When building it is important to have GLFW and GLEW installed. To build simply run the command ```make```
 once done there should be an output file called Engine to run it call ```./Engine```
 ### How Do I Download GLFW?
 To download GLFW first go to: https://www.glfw.org/download<br>
