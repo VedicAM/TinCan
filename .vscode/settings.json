@@ -1,0 +1,12 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/sanjaymukherjee/TinCan",
+            "binaryPath": "/Users/sanjaymukherjee/TinCan/Engine",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
+}
