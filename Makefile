@@ -7,3 +7,9 @@ application =  Engine
 
 build:
 	$(CC) $(cflags) $(src) $(libs) -o $(application)
+
+buildSTB:
+	$(CC) -c Src/Vendor/stb_image/stb_image.cpp -o Src/Vendor/stb_image/stb_image.o
+
+clean:
+	rm Engine
