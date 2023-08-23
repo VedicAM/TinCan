@@ -20,6 +20,7 @@
 #include "Vendor/imgui/imgui_impl_glfw_gl3.h"
 
 #include "Tests/TestClearColor.h"
+#include "Tests/TestTexture2D.h"
 
 int main(void){
     GLFWwindow* window;
@@ -62,9 +63,10 @@ int main(void){
     Tests::TestMenu* testMenu = new Tests::TestMenu(currentTest);
     currentTest = testMenu;
 
-   testMenu->RegisterTest<Tests::TestClearColor>("Clear Color");
-
-   while (!glfwWindowShouldClose(window)){
+    testMenu->RegisterTest<Tests::TestClearColor>("Clear Color");
+    testMenu->RegisterTest<Tests::TestTexture2D>("2D Texture");
+   
+    while (!glfwWindowShouldClose(window)){
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         renderer.Clear();
 
