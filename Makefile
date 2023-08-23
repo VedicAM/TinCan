@@ -12,6 +12,3 @@ ifeq (,$(wildcard Src/Vendor/stb_image/stb_image.o))
 endif
 
 	$(CC) $(cflags) $(src) $(libs) -o $(application)
-
-clean:
-	rm Engine
