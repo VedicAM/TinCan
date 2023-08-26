@@ -3,7 +3,7 @@ CPPV = c++17
 cflags = -Wall -std=$(CPPV) -framework CoreFoundation -framework OpenGL
 vendorLink = Src/Vendor/stb_image/stb_image.o
 libs = /usr/local/lib/libglfw.3.dylib /usr/local/lib/libGLEW.2.2.0.dylib $(vendorLink)
-src = Src/*.cpp Src/Vendor/imgui/*.cpp Src/Tests/*.cpp
+src = Src/*.cpp Src/Vendor/imgui/*.cpp
 application =  Engine
 
 build:

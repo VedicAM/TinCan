@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <GL/glew.h>
+#include "Vendor/GL/glew.h"
 
 #include "VertexArray.h"
 #include "IndexBuffer.h"

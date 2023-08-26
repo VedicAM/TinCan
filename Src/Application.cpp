@@ -1,5 +1,5 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "Vendor/GL/glew.h"
+#include "Vendor/GLFW/glfw3.h"
 
 #include <iostream>
 #include <fstream>
@@ -19,15 +19,14 @@
 #include "Vendor/imgui/imgui.h"
 #include "Vendor/imgui/imgui_impl_glfw_gl3.h"
 
-#include "Tests/TestClearColor.h"
-#include "Tests/TestTexture2D.h"
+#include "TestTexture2D.h"
 
 int main(void){
     GLFWwindow* window;
 
     if (!glfwInit())
         return -1;
-
+    
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -59,31 +58,16 @@ int main(void){
     ImGui_ImplGlfwGL3_Init(window, true);
     ImGui::StyleColorsDark();
 
-    Tests::Test* currentTest = nullptr;
-    Tests::TestMenu* testMenu = new Tests::TestMenu(currentTest);
-    currentTest = testMenu;
+    Tests::TestTexture2D texture2D;
 
-    testMenu->RegisterTest<Tests::TestClearColor>("Clear Color");
-    testMenu->RegisterTest<Tests::TestTexture2D>("2D Texture");
-   
     while (!glfwWindowShouldClose(window)){
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         renderer.Clear();
 
         ImGui_ImplGlfwGL3_NewFrame();
-
-        if(currentTest){
-            currentTest->OnUpdate(0.0f);
-            currentTest->OnRender();
-            ImGui::Begin("Test");
-            if(currentTest != testMenu && ImGui::Button("<-")){
-                delete currentTest;
-                currentTest = testMenu;
-            }
-            currentTest->OnImGuiRender();
-            ImGui::End();
-        }
-
+        texture2D.OnUpdate(window, 0.0f);
+        texture2D.OnRender();
+        texture2D.OnImGuiRender();
 
         ImGui::Render();
         ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
@@ -92,9 +76,6 @@ int main(void){
         glfwPollEvents();
     }
     
-    delete currentTest;
-    if(currentTest != testMenu)
-        delete testMenu;
 
     ImGui_ImplGlfwGL3_Shutdown();
     ImGui::DestroyContext();

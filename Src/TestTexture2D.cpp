@@ -1,17 +1,19 @@
 #include "TestTexture2D.h"
 
-#include "../Vendor/imgui/imgui.h"
-#include "../Vendor/glm/glm.hpp"
-#include "../Vendor/glm/gtc/matrix_transform.hpp"
+#include "Vendor/GLFW/glfw3.h"
+#include "Vendor/imgui/imgui.h"
+#include "Vendor/glm/glm.hpp"
+#include "Vendor/glm/gtc/matrix_transform.hpp"
 
-#include "../Renderer.h"
+#include "Renderer.h"
+#include "Camera.h"
 
 namespace Tests{
     TestTexture2D::TestTexture2D() : 
     m_TranslationA(200, 200, 0), 
     m_TranslationB(400, 200, 0), 
-    m_Proj(glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f)), 
-    m_View(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))){
+    m_Proj(glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f)),
+    m_View(glm::lookAt(glm::vec3(0, 0, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0))){
         float positions[] = {
             -50.0f, -50.0f, 0.0f, 0.0f, // 0
              50.0f, -50.0f, 1.0f, 0.0f, // 1
@@ -48,12 +50,12 @@ namespace Tests{
 
     }
 
-    void TestTexture2D::OnUpdate(float deltaTime){
-
+    void TestTexture2D::OnUpdate(GLFWwindow* window, float deltaTime){
+      m_Camera.updateViewMatrix(window, 5.0f, m_View, m_Position);
     }
 
     void TestTexture2D::OnRender(){
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.23f, 0.33f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         Renderer renderer;

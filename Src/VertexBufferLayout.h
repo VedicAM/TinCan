@@ -2,9 +2,10 @@
 #define VERTEXBUFFERLAYOUT_H
 
 #include <vector>
-#include <GL/glew.h>
 
 #include "Renderer.h"
+#include "Vendor/GL/glew.h"
+
 
 struct VertexBufferElement{
     unsigned int type;
