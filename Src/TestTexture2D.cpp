@@ -51,7 +51,7 @@ namespace Tests{
     }
 
     void TestTexture2D::OnUpdate(GLFWwindow* window, float deltaTime){
-      m_Camera.updateViewMatrix(window, 5.0f, m_View, m_Position);
+      m_Camera.updateViewMatrix(window, 5.0f, m_View, m_Proj, m_Position);
     }
 
     void TestTexture2D::OnRender(){

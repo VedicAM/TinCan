@@ -8,10 +8,12 @@
 
 class Camera{
     public:
-        Camera();
-        ~Camera();
+      Camera();
+      ~Camera();
 
-        void updateViewMatrix(GLFWwindow* window, float speed, glm::mat4 &viewMat, glm::vec3 &position);
+      void updateViewMatrix(GLFWwindow* window, float speed, glm::mat4 &viewMat, glm::mat4 &projMat, glm::vec3 &position);
+    private:
+      static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 };
 
 #endif
